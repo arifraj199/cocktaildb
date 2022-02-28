@@ -1,22 +1,24 @@
 // search field
-const searchField = search => {
-    const searchText = document.getElementById('search-field').value;
+const searchFieldValue = () => {
+    const searchField = document.getElementById('search-field').value;
     document.getElementById('search-field').value = '';
-    // loadCocktail(searchText);
+    loadCocktail(searchField);
+    // return searchField;
 
 }
 // load cocktail data
-const loadCocktail = () => {
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka`;
+const loadCocktail = searchField => {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchField}`;
     fetch(url)
     .then(res => res.json())
     .then(data => displayResult(data.drinks));
 }
-loadCocktail();
+// loadCocktail();
 
 const displayResult = drinks => {
     // console.log(drinks);
     const drinksDiv = document.getElementById('display-drink');
+    drinksDiv.textContent = '';
     drinks.forEach(drink => {
         console.log(drink);
         const div = document.createElement('div');
