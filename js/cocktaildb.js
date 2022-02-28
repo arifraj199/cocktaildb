@@ -3,10 +3,12 @@ const searchFieldValue = () => {
     const searchField = document.getElementById('search-field').value;
     document.getElementById('search-field').value = '';
     const errorText = document.getElementById('error');
+    // const url = fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchField}`);
     toggleSpinner('block');
     if(searchField === ''){
       errorText.innerText = "please search by valid keyword";
       toggleSpinner('none');
+      displayResult().textContent='';
     }else{
       loadCocktail(searchField);
       errorText.innerText = '';
@@ -47,5 +49,6 @@ const displayResult = drinks => {
         `;
         toggleSpinner('none');
         drinksDiv.appendChild(div);
+        // return drinksDiv;
     })
 }
