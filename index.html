@@ -18,12 +18,25 @@
         </section>
     </header>
     <main>
+        <!-- search input -->
         <section class=" d-flex justify-content-center">
             <div class="input-group mb-3 w-50 mx-auto">
                 <input id="search-field" type="text" class="form-control" placeholder="search for drink" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button onclick="searchFieldValue()" class="btn btn-outline-secondary fw-bold" type="button" id="button-search">Search</button>
             </div>
         </section>
+        <section class="d-flex justify-content-center">
+            <div class="text-danger fs-4" id="error"></div>
+        </section>
+        <!-- spinner -->
+        <section>
+            <div class="d-flex justify-content-center">
+                <div id="spinner" class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        </section>
+        <!-- card -->
         <section>
             <div class="mt-3" id="display-drink">
             </div>

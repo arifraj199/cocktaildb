@@ -2,7 +2,16 @@
 const searchFieldValue = () => {
     const searchField = document.getElementById('search-field').value;
     document.getElementById('search-field').value = '';
-    loadCocktail(searchField);
+    const errorText = document.getElementById('error');
+    toggleSpinner('block');
+    if(searchField === ''){
+      errorText.innerText = "please search by valid keyword";
+      toggleSpinner('none');
+    }else{
+      loadCocktail(searchField);
+      errorText.innerText = '';
+    };
+    
     // return searchField;
 
 }
@@ -14,6 +23,10 @@ const loadCocktail = searchField => {
     .then(data => displayResult(data.drinks));
 }
 // loadCocktail();
+const toggleSpinner = display => {
+  const spinner = document.getElementById('spinner');
+  spinner.style.display = display;
+}
 
 const displayResult = drinks => {
     // console.log(drinks);
@@ -32,6 +45,7 @@ const displayResult = drinks => {
         </div>
       </div>
         `;
+        toggleSpinner('none');
         drinksDiv.appendChild(div);
     })
 }
